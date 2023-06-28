@@ -1,10 +1,14 @@
 package com.delivero.company.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +23,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToMany(mappedBy = "restaurant")
+    List<Restaurants> restaurants;
+    
     private String nome;
 
     private String cognome;

@@ -1,5 +1,7 @@
 package com.delivero.company.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,13 +23,12 @@ public class Category {
 
     private String img;
 
-    @ManyToMany
-    private Restaurants restaurants;
+    @ManyToMany(mappedBy = "category")
+    List<Restaurants> restaurants;
 
-    public Category(String name, String img, Restaurants restaurants) {
+    public Category(String name, String img) {
         this.name = name;
         this.img = img;
-        this.restaurants = restaurants;
     }
 
 }
