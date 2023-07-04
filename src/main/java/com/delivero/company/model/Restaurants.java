@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @NoArgsConstructor
@@ -18,7 +18,8 @@ public class Restaurants {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "user_id") 
     private User user;
 
     private String name;
@@ -27,11 +28,11 @@ public class Restaurants {
 
     private String address;
 
-    private Long telNumber;
+    private String telNumber; 
 
     private String photo;
 
-    public Restaurants(User user, String name, String description, String address, Long telNumber, String photo) {
+    public Restaurants(User user, String name, String description, String address, String telNumber, String photo) {
         this.user = user;
         this.name = name;
         this.description = description;
@@ -39,9 +40,4 @@ public class Restaurants {
         this.telNumber = telNumber;
         this.photo = photo;
     }
-
-
-    
-
-
 }

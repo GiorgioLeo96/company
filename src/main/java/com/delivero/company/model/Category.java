@@ -1,9 +1,12 @@
 package com.delivero.company.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,12 +25,14 @@ public class Category {
     private String img;
 
     @ManyToMany
-    private Restaurants restaurants;
+    @JoinTable(name = "restaurant_category") 
+    private List<Restaurants> restaurants;
 
-    public Category(String name, String img, Restaurants restaurants) {
+    public Category(String name, String img, List<Restaurants> restaurants) {
         this.name = name;
         this.img = img;
         this.restaurants = restaurants;
     }
 
 }
+
