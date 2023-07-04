@@ -5,8 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,13 +23,14 @@ public class Category {
 
     private String img;
 
-    @ManyToMany
-    private Restaurants restaurants;
 
-    public Category(String name, String img, Restaurants restaurants) {
+
+    @OneToMany(mappedBy = "category")
+    private List<RestaurantCategory> restaurantCategories;
+
+    public Category(String name, String img) {
         this.name = name;
         this.img = img;
-        this.restaurants = restaurants;
     }
 
 }
