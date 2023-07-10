@@ -33,14 +33,14 @@ public class Restaurants {
 
     private String address;
 
-    private Long telNumber;
+    private String telNumber;
 
     private String photo;
 
     @OneToMany(mappedBy = "restaurant")
     private List<RestaurantCategory> restaurantCategories;
 
-    public Restaurants(User user, String name, String description, String address, Long telNumber, String photo) {
+    public Restaurants(User user, String name, String description, String address, String telNumber, String photo) {
         this.user = user;
         this.name = name;
         this.description = description;
