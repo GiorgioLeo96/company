@@ -8,8 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,14 +26,14 @@ public class Category {
 
     private String img;
 
-    @ManyToMany
-    @JoinTable(name = "restaurant_category") 
-    private List<Restaurants> restaurants;
 
-    public Category(String name, String img, List<Restaurants> restaurants) {
+
+    @OneToMany(mappedBy = "category")
+    private List<RestaurantCategory> restaurantCategories;
+
+    public Category(String name, String img) {
         this.name = name;
         this.img = img;
-        this.restaurants = restaurants;
     }
 
 }
