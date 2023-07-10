@@ -48,7 +48,7 @@ public class CategoryService {
 
         oldCat.setImg(newCat.getImg());
         oldCat.setName(newCat.getName());
-        oldCat.setRestaurants(newCat.getRestaurants());
+    
 
         return categoryRepository.save(oldCat);
     }

@@ -6,7 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.delivero.company.model.Category;
+import com.delivero.company.model.Restaurants;
+import com.delivero.company.model.User;
 import com.delivero.company.service.CategoryService;
+import com.delivero.company.service.RestaurantService;
+import com.delivero.company.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +20,12 @@ public class DeliveroDataLoader implements CommandLineRunner {
     
     @Autowired
     CategoryService categoryserv;
+
+    @Autowired
+    RestaurantService restaurantserv;
+
+    @Autowired
+    UserService userserv;
 
      @Override
     public void run(String... args) throws Exception {
@@ -39,6 +49,16 @@ public class DeliveroDataLoader implements CommandLineRunner {
         categoryserv.save(c7);
         categoryserv.save(c8);
 
+        User u1 = new User("Giuseppe","Placida","dkdjkshsjk","email@gmail.com","ciaobelli");
+        User u2 = new User("Giorgio","Leo","dkdjkshsjk","email@gmail.com","ciaobelli1");
+
+        Restaurants r1 = new Restaurants(u1,"da Giorgio","si mangia bene","via falla grossa","84242429","./img/CIA");
+        Restaurants r2 = new Restaurants(u2,"da Leo","si mangia male","via non farla grossa","non chiamate","./img/CIA");
+
+        userserv.save(u1);
+        userserv.save(u2);
+        restaurantserv.save(r1);
+        restaurantserv.save(r2);
         System.out.println("cis ono");
     }
     
