@@ -67,6 +67,7 @@ public class UserController {
             return ResponseEntity.ok(response);
         } catch (org.springframework.security.core.AuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        
         }
     }
     
