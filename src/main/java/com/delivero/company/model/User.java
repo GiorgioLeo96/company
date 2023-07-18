@@ -21,8 +21,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(mappedBy = "restaurant")
-    List<Restaurants> restaurants;
     
     private String nome;
 
